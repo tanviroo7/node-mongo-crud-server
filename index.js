@@ -6,6 +6,8 @@ const cors = require("cors");
 const ObjectId = require("mongodb").ObjectId;
 
 const app = express();
+const port = process.env.PORT || 5000;
+
 app.use(cors());
 app.use(express.json());
 
@@ -95,10 +97,11 @@ async function run() {
 }
 run().catch(console.dir);
 
-const port = process.env.PORT || 5000;
-
 app.get("/", (req, res) => {
   res.send("hello from node mongo crud server");
+});
+app.get("/hello", (req, res) => {
+  res.send("hello here");
 });
 
 app.listen(port, () => {
